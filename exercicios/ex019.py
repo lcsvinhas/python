@@ -40,7 +40,7 @@ session.commit()
 jogos = session.query(Jogo).all()
 
 for jogo in jogos:
-print(jogo.id, jogo.nome, jogo.descricao)
+   print(jogo.id, jogo.nome, jogo.descricao)
 
 # Atualizar a descricão de um jogo
 jogo = session.query(Jogo).filter(id=1).first()
