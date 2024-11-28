@@ -1,84 +1,54 @@
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+import pymysql.connector
 
-DATABASE_URL = "sqlite:///exemplo.db"
-engine = create_engine(DATABASE_URL, echo=True)
+conexao = pymysql.connector.connect(
+    user="apostila",
+    password="AssasinsCreed@",
+    host="127.0.0.1",
+    database="LojaDeGames"
+)
 
-Base = declarative_base()
+cursor = conexao.cursor()
 
-class User(Base):
-    __tablename__ = "users"
+query = "CREATE TABLE Jogos (id INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(255) NOT NULL,"
+query += " plataforma VARCHAR(50), data_lancamento DATE, descricao TEXT);"
+cursor.execute(query)
+conexao.commit()
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    age = Column(Integer, nullable=False)
-    email = Column(String, unique=True, nullable=False)
+import datetime
 
-    def __repr__(self):
-        return f"User(id={self.id}, name='{self.name}', age={self.age}, email='{self.email}')"
-    
-Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
-session = Session()
+lancamento = datetime.datetime(2017,11,13)
 
-def add_user(name, age, email):
-    existing_user = session.query(User).filter_by(email=email).first()
-    if existing_user:
-        print(f"User with email {email} already exists: {existing_user}")
-        return
-    new_user = User(name=name, age=age, email=email)
-    session.add(new_user)
-    session.commit()
-    print(f"Added {new_user}")
+# INSERIR UM NOVO JOGO
+query = "INSERT INTO Jogos (nome, plataforma, data_lancamento, descricao)"
+query += "VALUES (%s, %s)"
+dados = ("Assassin's Creed", "XBOX 360", lancamento, "Assassin's Creed ...")
+cursor.execute(query, dados)
 
-def get_users():
-    users = session.query(User).all()
-    for user in users:
-        print(user)
+# CERTIFICAR-SE DE FAZER COMMIT PARA SALVAR AS ALTERAÇÕES
+conexao.commit()
 
-def update_user(user_id, new_name=None, new_age=None, new_email=None):
-    user = session.query(User).get(user_id)
-    if user:
-        if new_name:
-            user.name = new_name
-        if new_age:
-            user.age = new_age
-        if new_email:
-            user.email = new_email
-        session.commit()
-        print(f"Updated {user}")
-    else:
-        print("User not found!")
+# RECUPERAR TODOS OS JOGOS
+query = "SELECT * FROM Jogos"
 
-def delete_user(user_id):
-    user = session.query(User).get(user_id)
-    if user:
-        session.delete(user)
-        session.commit()
-        print(f"Deleted {user}")
-    else:
-        print("User not found!")
+cursor.execute(query)
+jogos = cursor.fetchall()
 
-if __name__ == "__main__":
-    # Adicionar usuários
-    add_user("Alice", 25, "alice@example.com")
-    add_user("Bob", 30, "bob@example.com")
+for jogo in jogos:
+    print(jogo)
 
-    # Listar usuários
-    print("\nLista de usuários:")
-    get_users()
+# ATUALIZAR A DESCRIÇÃO DE UM JOGO
+query = "UPDATE Jogos SET descricao = %s WHERE id = %s"
+dados = ("O primeiro game da franquia ...", 1)
 
-    # Atualizar usuário
-    update_user(1, new_name="Alicia", new_age=26)
+cursor.execute(query, dados)
+conexao.commit()
 
-    # Listar usuários após atualização
-    print("\nLista de usuários após atualização:")
-    get_users()
+# EXCLUIR UM JOGO
+query = "DELETE FROM Jogos WHERE id = %s"
+jogo_id = (1,)
 
-    # Deletar um usuário
-    delete_user(2)
+cursor.execute(query, jogo_id)
+conexao.commit()
 
-    # Listar usuários após exclusão
-    print("\nLista de usuários após exclusão:")
-    get_users()
+cursor.close()
+conexao.close()

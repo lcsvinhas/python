@@ -1,10 +1,11 @@
-import pymysql.connector
+import mysql.connector
 
-conexao = pymysql.connector.connect(
-    user="apostila",
-    password="AssasinsCreed@",
-    host="127.0.0.1",
-    database="LojaDeGames"
+# CONFIGURAÇÃO DA CONEXÃO
+conexao = mysql.connector.connect(
+    user = "apostila",
+    password = "AssassinsCreed@",
+    host = "127.0.0.1",
+    database = "LojaDeGames"
 )
 
 cursor = conexao.cursor()
