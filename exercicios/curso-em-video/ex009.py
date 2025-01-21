@@ -1,4 +1,7 @@
+# Exercício Python 9: Faça um programa que leia um número Inteiro qualquer e mostre na tela a sua tabuada.
+
 numero = int(input('Digite um número para ver sua tabuada: '))
+
 print('{} x {:2} = {}'.format(numero, 1, numero*1))
 print('{} x {:2} = {}'.format(numero, 2, numero*2))
 print('{} x {:2} = {}'.format(numero, 3, numero*3))
