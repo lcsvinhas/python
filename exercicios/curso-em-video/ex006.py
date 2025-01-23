@@ -1,4 +1,4 @@
-# Exercício Python 6: Crie um algoritmo que leia um número e mostre o seu dobro, triplo e raiz quadrada.
+# Exercício Python 006: Crie um algoritmo que leia um número e mostre o seu dobro, triplo e raiz quadrada.
 
 numero = int(input('Digite um número: '))
 

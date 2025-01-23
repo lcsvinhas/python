@@ -1,4 +1,4 @@
-# Exercício Python 9: Faça um programa que leia um número Inteiro qualquer e mostre na tela a sua tabuada.
+# Exercício Python 009: Faça um programa que leia um número Inteiro qualquer e mostre na tela a sua tabuada.
 
 numero = int(input('Digite um número para ver sua tabuada: '))
 

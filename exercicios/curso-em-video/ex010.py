@@ -1,4 +1,4 @@
-# Exercício Python 10: Crie um programa que leia quanto dinheiro uma pessoa tem na carteira e mostre quantos dólares ela pode comprar.
+# Exercício Python 010: Crie um programa que leia quanto dinheiro uma pessoa tem na carteira e mostre quantos dólares ela pode comprar.
 
 # Cotações de 31/12/2024. Voltar no futuro e ver se melhoramos a situação!
 real = float(input('Quanto dinheiro você tem? R$'))
