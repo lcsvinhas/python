@@ -1,11 +1,12 @@
+import datetime
 import mysql.connector
 
 # CONFIGURAÇÃO DA CONEXÃO
 conexao = mysql.connector.connect(
-    user = "apostila",
-    password = "AssassinsCreed@",
-    host = "127.0.0.1",
-    database = "LojaDeGames"
+    user="apostila",
+    password="AssassinsCreed@",
+    host="127.0.0.1",
+    database="LojaDeGames"
 )
 
 cursor = conexao.cursor()
@@ -15,9 +16,7 @@ query += " plataforma VARCHAR(50), data_lancamento DATE, descricao TEXT);"
 cursor.execute(query)
 conexao.commit()
 
-import datetime
-
-lancamento = datetime.datetime(2017,11,13)
+lancamento = datetime.datetime(2017, 11, 13)
 
 # INSERIR UM NOVO JOGO
 query = "INSERT INTO Jogos (nome, plataforma, data_lancamento, descricao)"

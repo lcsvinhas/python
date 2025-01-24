@@ -7,6 +7,7 @@ engine = create_engine(DATABASE_URL, echo=True)
 
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = "users"
 
@@ -17,10 +18,12 @@ class User(Base):
 
     def __repr__(self):
         return f"User(id={self.id}, name='{self.name}', age={self.age}, email='{self.email}')"
-    
+
+
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
+
 
 def add_user(name, age, email):
     existing_user = session.query(User).filter_by(email=email).first()
@@ -32,10 +35,12 @@ def add_user(name, age, email):
     session.commit()
     print(f"Added {new_user}")
 
+
 def get_users():
     users = session.query(User).all()
     for user in users:
         print(user)
+
 
 def update_user(user_id, new_name=None, new_age=None, new_email=None):
     user = session.query(User).get(user_id)
@@ -51,6 +56,7 @@ def update_user(user_id, new_name=None, new_age=None, new_email=None):
     else:
         print("User not found!")
 
+
 def delete_user(user_id):
     user = session.query(User).get(user_id)
     if user:
@@ -59,6 +65,7 @@ def delete_user(user_id):
         print(f"Deleted {user}")
     else:
         print("User not found!")
+
 
 if __name__ == "__main__":
     # Adicionar usuários

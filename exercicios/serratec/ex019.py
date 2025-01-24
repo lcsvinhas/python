@@ -1,3 +1,4 @@
+import datetime
 import pymysql.connector
 
 conexao = pymysql.connector.connect(
@@ -14,9 +15,7 @@ query += " plataforma VARCHAR(50), data_lancamento DATE, descricao TEXT);"
 cursor.execute(query)
 conexao.commit()
 
-import datetime
-
-lancamento = datetime.datetime(2017,11,13)
+lancamento = datetime.datetime(2017, 11, 13)
 
 # INSERIR UM NOVO JOGO
 query = "INSERT INTO Jogos (nome, plataforma, data_lancamento, descricao)"
