@@ -5,4 +5,5 @@ Exercício Python 111: Crie um pacote chamado utilidadesCeV que tenha dois módu
 from utilidadescev import moeda
 
 p = float(input('Digite o preço: R$'))
+
 moeda.resumo(p, 35, 22)

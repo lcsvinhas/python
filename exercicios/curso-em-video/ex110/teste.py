@@ -5,4 +5,5 @@ Exercício Python 110: Adicione o módulo moeda.py criado nos desafios anteriore
 import moeda
 
 p = float(input('Digite o preço: R$'))
+
 moeda.resumo(p, 20, 12)

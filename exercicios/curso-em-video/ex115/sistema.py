@@ -12,7 +12,8 @@ if not arquivoExiste(arq):
     criarArquivo(arq)
 
 while True:
-    resposta = menu(['Ver pessoas cadastradas', 'Cadastrar nova pessoa', 'Sair do sistema'])
+    resposta = menu(['Ver pessoas cadastradas',
+                    'Cadastrar nova pessoa', 'Sair do sistema'])
     if resposta == 1:
         # Opção de listar o conteúdo de um arquivo.
         lerArquivo(arq)

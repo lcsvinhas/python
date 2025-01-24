@@ -1,10 +1,17 @@
+'''
+Exercício Python 071: Crie um programa que simule o funcionamento de um caixa eletrônico. No início, pergunte ao usuário qual será o valor a ser sacado (número inteiro) e o programa vai informar quantas cédulas de cada valor serão entregues.
+OBS: considere que o caixa possui cédulas de R$50, R$20, R$10 e R$1.
+'''
+
 print('=' * 35)
 print('{:^35}'.format('BANCO CEV'))
 print('=' * 35)
+
 valor = int(input('Que valor você quer sacar? R$'))
 total = valor
 ced = 50
 totced = 0
+
 while True:
     if total >= ced:
         total -= ced
@@ -19,6 +26,8 @@ while True:
         elif ced == 10:
             ced = 1
         totced = 0
-        if total == 0: break
+        if total == 0:
+            break
+
 print('=' * 35)
 print('Volte sempre ao BANCO CEV! Tenha um bom dia!')

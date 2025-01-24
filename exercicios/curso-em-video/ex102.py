@@ -1,3 +1,8 @@
+'''
+Exercício Python 102: Crie um programa que tenha uma função fatorial() que receba dois parâmetros: o primeiro que indique o número a calcular e outro chamado show, que será um valor lógico (opcional) indicando se será mostrado ou não na tela o processo de cálculo do fatorial.
+'''
+
+
 def fatorial(n, show=False):
     '''
     -> Calcula o fatorial de um número.
@@ -18,5 +23,6 @@ def fatorial(n, show=False):
 
 
 fat = int(input('Digite um número para ver seu fatorial: '))
+
 print(fatorial(fat, show=True))
 help(fatorial)

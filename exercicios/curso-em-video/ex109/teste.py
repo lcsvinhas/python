@@ -5,6 +5,7 @@ Exercício Python 109: Modifique as funções que form criadas no desafio 107 pa
 import moeda
 
 p = float(input('Digite o preço: R$'))
+
 print(f'A metade de R${moeda.moeda(p)} é {moeda.metade(p, True)}')
 print(f'O dobro de R${moeda.moeda(p)} é {moeda.dobro(p, True)}')
 print(f'Aumentado 10%, temos R${moeda.aumentar(p, 10, True)}')

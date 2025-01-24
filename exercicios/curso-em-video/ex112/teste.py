@@ -5,4 +5,5 @@ Exercício Python 112: Dentro do pacote utilidadesCeV que criamos no desafio 111
 from utilidadescev import moeda, dado
 
 p = dado.leiaDinheiro('Digite o preço: R$')
+
 moeda.resumo(p, 35, 22)
